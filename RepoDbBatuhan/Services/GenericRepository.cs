@@ -6,45 +6,46 @@ namespace RepoDbBatuhan.Services
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected RepoDbBatuhanContext context;
-        internal DbSet<T> dbSet;
-        protected readonly ILogger _logger;
+        private readonly RepoDbBatuhanContext _context; // database
+        private readonly DbSet<T> _dbSet; // database tablosu
 
-        public GenericRepository(RepoDbBatuhanContext context, ILogger logger)
+        public GenericRepository(RepoDbBatuhanContext context)
         {
-            this.context = context;
-            this.dbSet = context.Set<T>();
-            _logger = logger;
+            _context = context;
+            _dbSet = context.Set<T>();
+        }
+        // virtual = override edilebilir
+        public virtual async Task<bool> Ekle(T entity)
+        {
+            await _dbSet.AddAsync(entity);
+            return true;
         }
 
-        public Task<IEnumerable<T>> GetirHepsi()
+        public virtual async Task<T> GetirById(Guid id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FindAsync(id);
         }
 
-        public Task<T> GetirById(Guid id)
+        public virtual async Task<IEnumerable<T>> GetirFiltreli(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            // geleni arat listele
+            return await _dbSet.Where(predicate).ToListAsync();
         }
 
-        public Task<bool> Ekle(T entity)
+        public virtual async Task<IEnumerable<T>> GetirHepsi()
         {
-            throw new NotImplementedException();
+            return await _dbSet.ToListAsync();
+        }
+        public virtual async Task<bool> Güncelle(T entity)
+        {
+            _dbSet.Update(entity);
+            return true;
         }
 
-        public Task<bool> Sil(Guid id)
+        public virtual async Task<bool> Sil(Guid id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Güncelle(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<T>> GetirFiltreli(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
+            _dbSet.Remove(await _dbSet.FindAsync(id));
+            return true;
+        }        
     }
 }
