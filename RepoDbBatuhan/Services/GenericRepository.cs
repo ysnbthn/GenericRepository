@@ -4,15 +4,18 @@ using System.Linq.Expressions;
 
 namespace RepoDbBatuhan.Services
 {
+    // interface fonksiyonlarının implement edildiği yer
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly RepoDbBatuhanContext _context; // database
-        private readonly DbSet<T> _dbSet; // database tablosu
+        protected readonly RepoDbBatuhanContext _context; // database
+        protected readonly DbSet<T> _dbSet; // database tablosu
+        protected readonly ILogger _logger;
 
-        public GenericRepository(RepoDbBatuhanContext context)
+        public GenericRepository(RepoDbBatuhanContext context, ILogger logger)
         {
             _context = context;
             _dbSet = context.Set<T>();
+            _logger = logger;
         }
         // virtual = override edilebilir
         public virtual async Task<bool> Ekle(T entity)
