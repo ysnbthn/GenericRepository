@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoDbBatuhan", "RepoDbBatuhan\RepoDbBatuhan.csproj", "{52BAB862-7457-4109-A293-8957515E9366}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52BAB862-7457-4109-A293-8957515E9366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52BAB862-7457-4109-A293-8957515E9366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52BAB862-7457-4109-A293-8957515E9366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52BAB862-7457-4109-A293-8957515E9366}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {735CEB30-E316-4427-BEBB-8E3BAE077B52}
+	EndGlobalSection
+EndGlobal
