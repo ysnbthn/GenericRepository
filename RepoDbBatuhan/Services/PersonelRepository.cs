@@ -8,7 +8,7 @@ namespace RepoDbBatuhan.Services
     public class PersonelRepository : GenericRepository<Personel>, IPersonelRepository
     {
         // inherit edilen base classda olduğu için tekrar dependency injectiona gerek yok
-        public PersonelRepository(RepoDbBatuhanContext context, ILogger logger) : base(context, logger)
+        public PersonelRepository(RepoDbBatuhanContext context, ILogger logger) : base(context, logger) // üste gönder inject etsin
         {
         }
 
